@@ -10,7 +10,8 @@
 		Alarm Clock
 	</title>
 	<!-- it is connected to one stylesheet -->
-    <link rel="stylesheet" type="text/css" href="tickclock.css">
+    <link rel="stylesheet" type="text/css" href="Digital-Alarm-clock/tickclock.css
+">
 </head>
 
 <body>  
