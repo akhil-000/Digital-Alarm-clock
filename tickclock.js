@@ -83,7 +83,7 @@
 		secondsHtml.innerHTML = seconds;
 		periodHtml.classList.add("light-on");
 	
-		fetchAlarm();//fetching alarms for every second
+		fetchAlarmvalue();//fetching alarms for every second
 	
 	};
 	
@@ -91,29 +91,29 @@
 	
 //function to keep alarm list updated
 	function updateAlarmlist() {
-		const alarms = checkAlarams();
+		const alarms = checkAlarmvalues();
 	console.log(alarms);
 		alarms.forEach((time) => {
 		
-			addAlarmToDom(time);
+			addAlarmlistitemToDom(time);
 			
 		  });
 		}
 		
 		// Event Listener added to Set Alarm Button
-	setAlarmButton.addEventListener("click", getInput);
+	setAlarmButton.addEventListener("click", getInputalarmvalue);
 		
 	// create HTML selectors - hours, minutes,seconds
-	var thr=createSel(12);
-	var thm=createSel(59);
-	var ths=createSel(59);
+	var thr=createSelect(12);
+	var thm=createSelect(59);
+	var ths=createSelect(59);
 	
 	document.getElementById("tpick-h").appendChild(thr);
 	document.getElementById("tpick-m").appendChild( thm);
 	document.getElementById("tpick-s").appendChild(ths);	
  
    //  SUPPORT FUNCTION - CREATE SELECTOR FOR HR, MIN, SEC
-  function createSel (max) {
+  function createSelect (max) {
     let selector = document.createElement("select"), opt;
     for (let i=0; i<=max; i++) {
       opt = document.createElement("option");
@@ -141,18 +141,18 @@
   
 
   //function to get input from selectors and set alarm
-  function getInput() {
+  function getInputalarmvalue() {
 	var tpick=document.getElementById("tpick-p");//getting am or pm value
 	alarm = thr.value+":"+ thm.value+":" + ths.value+" " + tpick.value;
    fetching=false;
 	if (!fetching) {
-		saveAlarm(alarm);
+		saveAlarmvalue(alarm);
 	  }	
-	addAlarmToDom(alarm);
+	addAlarmlistitemToDom(alarm);
   }
 
   // function to add alarm list item to dom
-  function addAlarmToDom(time) {
+  function addAlarmlistitemToDom(time) {
 	
 	const element = document.createElement("div");
 	element.classList.add("alarm", "d-flex");
@@ -164,7 +164,7 @@
 
 
 // Is alarms saved in Local Storage?
-  function checkAlarams() {
+  function checkAlarmvalues() {
 	let alarms = [];
 	const isPresent = localStorage.getItem("alarms");
 	if (isPresent) alarms = JSON.parse(isPresent);
@@ -172,7 +172,7 @@
   }
   
   // save alarm list to local storage
-  function saveAlarm(time) {
+  function saveAlarmvalue(time) {
 	const alarms = checkAlarams();  
 	alarms.push(time);
 	localStorage.setItem("alarms", JSON.stringify(alarms));
@@ -200,7 +200,7 @@
  }
 
   // Fetching alarms from local storage
-  function fetchAlarm() {
+  function fetchAlarmvalue() {
 	const alarms = checkAlarams();	
     alarms.forEach((time) => {
     alarmchecker(now,time);
@@ -210,7 +210,7 @@
   }
   
 //delete alarm from dom
-  function deleteAlarm(event, time) {
+  function deleteAlarmfromdom(event, time) {
 	const self = event.target;
 	const parent = self.parentElement;
 	deleteAlarmFromLocal(time);
@@ -218,7 +218,7 @@
   }
   
   //delete alarm from local storage
-  function deleteAlarmFromLocal(time) {
+  function deleteAlarmvalueFromLocal(time) {
 	const alarms = checkAlarams();
 	const index = alarms.indexOf(time);
 	alarms.splice(index, 1);
