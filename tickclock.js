@@ -158,7 +158,7 @@
 	element.classList.add("alarm", "d-flex");
 	element.innerHTML = `<div class= "time" >${time} </div> <button class="button" >Delete</button>`;   
 	const deleteButton = element.querySelector(".button");
-	deleteButton.addEventListener("click", (e) => deleteAlarm(e, time));
+	deleteButton.addEventListener("click", (e) => deleteAlarmfromdom(e, time));
 	alarmContainer.appendChild(element);//adding element to alarmContainer
   }
 
@@ -173,7 +173,7 @@
   
   // save alarm list to local storage
   function saveAlarmvalue(time) {
-	const alarms = checkAlarams();  
+	const alarms = checkAlarmvalues();  
 	alarms.push(time);
 	localStorage.setItem("alarms", JSON.stringify(alarms));
 	
@@ -201,7 +201,7 @@
 
   // Fetching alarms from local storage
   function fetchAlarmvalue() {
-	const alarms = checkAlarams();	
+	const alarms =checkAlarmvalues();	
     alarms.forEach((time) => {
     alarmchecker(now,time);
 		 fetching=true;
@@ -213,13 +213,13 @@
   function deleteAlarmfromdom(event, time) {
 	const self = event.target;
 	const parent = self.parentElement;
-	deleteAlarmFromLocal(time);
+	deleteAlarmvalueFromLocal(time);
     parent.remove(); //removes HTML element form dom
   }
   
   //delete alarm from local storage
   function deleteAlarmvalueFromLocal(time) {
-	const alarms = checkAlarams();
+	const alarms = checkAlarmvalues();
 	const index = alarms.indexOf(time);
 	alarms.splice(index, 1);
 	localStorage.setItem("alarms", JSON.stringify(alarms));
