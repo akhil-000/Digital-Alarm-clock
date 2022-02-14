@@ -1,34 +1,7 @@
 # Digital-Alarm-clock
 Digital Alarm Clock using Plain Javascript
 
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@akhil-000 
-akhil-000
-/
-Digital-Alarm-clock
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Digital-Alarm-clock/tickclock.html
-@akhil-000
-akhil-000 initial commit
-Latest commit 84ca053 20 hours ago
- History
- 1 contributor
-101 lines (77 sloc)  1.99 KB
+
    
 <!DOCTYPE html>
 <html lang="en">
@@ -131,16 +104,3 @@ Latest commit 84ca053 20 hours ago
 </body>
 
 </html>
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
