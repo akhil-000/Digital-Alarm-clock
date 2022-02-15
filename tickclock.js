@@ -9,7 +9,9 @@
 	var sound=new Audio("wake-up-sound.mp3");//alarm sound file 
 	var alarmContainer=document.getElementById("alarms-container");
 	setAlarmButton = document.getElementById("submitButton");
-
+    // Event Listener added to Set Alarm Button
+    setAlarmButton.addEventListener("click", getInputalarmvalue);
+    updateAlarmlist();//keeps the alarm list to page even after refreshing page
 
 	/*initilaising , updating time at for every second*/
 	const init = () => {
@@ -87,21 +89,7 @@
 	
 	};
 	
-	updateAlarmlist();//keeps the alarm list to page even after refreshing page
 	
-//function to keep alarm list updated
-	function updateAlarmlist() {
-		const alarms = checkAlarmvalues();
-	console.log(alarms);
-		alarms.forEach((time) => {
-		
-			addAlarmlistitemToDom(time);
-			
-		  });
-		}
-		
-		// Event Listener added to Set Alarm Button
-	setAlarmButton.addEventListener("click", getInputalarmvalue);
 		
 	// create HTML selectors - hours, minutes,seconds
 	var thr=createSelect(12);
@@ -140,6 +128,7 @@
   };
   
 
+
   //function to get input from selectors and set alarm
   function getInputalarmvalue() {
 	var tpick=document.getElementById("tpick-p");//getting am or pm value
@@ -162,6 +151,18 @@
 	alarmContainer.appendChild(element);//adding element to alarmContainer
   }
 
+
+	
+  //function to keep alarm list updated
+	  function updateAlarmlist() {
+		  const alarms = checkAlarmvalues();
+	  console.log(alarms);
+		  alarms.forEach((time) => {
+		  
+			  addAlarmlistitemToDom(time);
+			  
+			});
+		  }
 
 // Is alarms saved in Local Storage?
   function checkAlarmvalues() {
